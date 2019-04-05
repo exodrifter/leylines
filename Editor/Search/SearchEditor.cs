@@ -401,7 +401,7 @@ namespace Exodrifter.NodeGraph
 			searchStr = newSearchStr;
 
 			// Update the count
-			if (Event.current.type != EventType.Repaint)
+			if (Event.current.type != EventType.Repaint && Event.current.type != EventType.ExecuteCommand)
 			{
 				resultCount = results == null ? 0 : results.Count;
 			}
