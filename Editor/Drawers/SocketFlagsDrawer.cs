@@ -41,7 +41,7 @@ namespace Exodrifter.NodeGraph
 			var type = targetEnum.GetType();
 
 			EditorGUI.BeginProperty(rect, label, prop);
-			Enum enumNew = EditorGUI.EnumMaskField(rect, label, targetEnum);
+			Enum enumNew = EditorGUI.EnumFlagsField(rect, label, targetEnum);
 			prop.intValue = (int)Convert.ChangeType(enumNew, type);
 			EditorGUI.EndProperty();
 		}

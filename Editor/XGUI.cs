@@ -924,18 +924,6 @@ namespace Exodrifter.NodeGraph
 				return EditorGUI.ColorField(rect, label, value);
 		}
 
-		public static Color ColorField(Rect rect, string label, Color value, bool showEyedropper, bool showAlpha, bool hdr, ColorPickerHDRConfig hdrConfig)
-		{
-			using (new XGUIStatic())
-				return EditorGUI.ColorField(rect, new GUIContent(label), value, showEyedropper, showAlpha, hdr, hdrConfig);
-		}
-
-		public static Color ColorField(Rect rect, GUIContent label, Color value, bool showEyedropper, bool showAlpha, bool hdr, ColorPickerHDRConfig hdrConfig)
-		{
-			using (new XGUIStatic())
-				return EditorGUI.ColorField(rect, label, value, showEyedropper, showAlpha, hdr, hdrConfig);
-		}
-
 		public static Color ColorField(Color value, params GUILayoutOption[] options)
 		{
 			using (new XGUIStatic())
@@ -952,18 +940,6 @@ namespace Exodrifter.NodeGraph
 		{
 			using (new XGUIStatic())
 				return EditorGUILayout.ColorField(label, value, options);
-		}
-
-		public static Color ColorField(string label, Color value, bool showEyedropper, bool showAlpha, bool hdr, ColorPickerHDRConfig hdrConfig, params GUILayoutOption[] options)
-		{
-			using (new XGUIStatic())
-				return EditorGUILayout.ColorField(new GUIContent(label), value, showEyedropper, showAlpha, hdr, hdrConfig, options);
-		}
-
-		public static Color ColorField(GUIContent label, Color value, bool showEyedropper, bool showAlpha, bool hdr, ColorPickerHDRConfig hdrConfig, params GUILayoutOption[] options)
-		{
-			using (new XGUIStatic())
-				return EditorGUILayout.ColorField(label, value, showEyedropper, showAlpha, hdr, hdrConfig, options);
 		}
 
 		#endregion
