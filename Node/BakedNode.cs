@@ -182,7 +182,7 @@ namespace Exodrifter.NodeGraph
 		private string cachedDisplayName;
 		private void CacheNodeAttributeData()
 		{
-			if (cachedDisplayName != null)
+			if (!string.IsNullOrEmpty(cachedDisplayName))
 			{
 				return;
 			}
