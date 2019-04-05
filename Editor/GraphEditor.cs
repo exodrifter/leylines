@@ -174,33 +174,40 @@ namespace Exodrifter.NodeGraph
 			Tooltip = null;
 
 			// Make the box texture opaque
-			if (EditorGUIUtility.isProSkin && boxTexture == null)
+			if (boxTexture == null)
 			{
-				// Make a copy of the old texture
-				var oldTex = GUI.skin.box.normal.background;
-				var tmp = RenderTexture.GetTemporary(oldTex.width, oldTex.height);
-
-				Graphics.Blit(oldTex, tmp);
-				RenderTexture previous = RenderTexture.active;
-				RenderTexture.active = tmp;
-				boxTexture = new Texture2D(oldTex.width, oldTex.height);
-				boxTexture.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
-				RenderTexture.active = previous;
-				RenderTexture.ReleaseTemporary(tmp);
-
-				// Remove alpha
-				var colors = boxTexture.GetPixels();
-				for (int i = 0; i < colors.Length; ++i)
+				if (EditorGUIUtility.isProSkin)
 				{
-					// Pro background color is RGB(64, 64, 64)
-					colors[i].r = 0.2196f + (colors[i].r * colors[i].a);
-					colors[i].g = 0.2196f + (colors[i].g * colors[i].a);
-					colors[i].b = 0.2196f + (colors[i].b * colors[i].a);
-					colors[i].a = 1;
-				}
+					// Make a copy of the old texture
+					var oldTex = GUI.skin.box.normal.background;
+					var tmp = RenderTexture.GetTemporary(oldTex.width, oldTex.height);
 
-				boxTexture.SetPixels(colors);
-				boxTexture.Apply();
+					Graphics.Blit(oldTex, tmp);
+					RenderTexture previous = RenderTexture.active;
+					RenderTexture.active = tmp;
+					boxTexture = new Texture2D(oldTex.width, oldTex.height);
+					boxTexture.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
+					RenderTexture.active = previous;
+					RenderTexture.ReleaseTemporary(tmp);
+
+					// Remove alpha
+					var colors = boxTexture.GetPixels();
+					for (int i = 0; i < colors.Length; ++i)
+					{
+						// Pro background color is RGB(64, 64, 64)
+						colors[i].r = 0.2196f + (colors[i].r * colors[i].a);
+						colors[i].g = 0.2196f + (colors[i].g * colors[i].a);
+						colors[i].b = 0.2196f + (colors[i].b * colors[i].a);
+						colors[i].a = 1;
+					}
+
+					boxTexture.SetPixels(colors);
+					boxTexture.Apply();
+				}
+				else
+				{
+					boxTexture = GUI.skin.box.normal.background;
+				}
 			}
 			if (flatTexture == null)
 			{
